@@ -18,7 +18,7 @@ Inside env install requirements
 
 `pip install -r requirements.txt`   
 
-OR, install Django, Pillor, psycopg2-binary
+OR, install Django, Pillow, psycopg2-binary
 
 # Django Commands
 
