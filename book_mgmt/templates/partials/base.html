@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<!DOCTYPE js>
+<html lang="en">
+	<head>
+        {% block meta_head %}
+            <meta charset="UTF-8"/>
+		    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <link rel="icon" href="{% static 'assets/images/favicon.ico' %}" type="image/x-icon">
+           
+        {% endblock meta_head %}
+
+        {% block block_title %}
+            <title>Dashboard - Book Management Admin Template</title>
+        {% endblock block_title %}
+
+        {% block main_styles %}
+             <!-- Google font-->
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+            <!-- Required Fremwork -->
+            <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap/css/bootstrap.min.css' %}">
+            <!-- themify-icons line icon -->
+            <link rel="stylesheet" type="text/css" href="{% static 'assets/icon/themify-icons/themify-icons.css' %}">
+            <!-- ico font -->
+            <link rel="stylesheet" type="text/css" href="{% static 'assets/icon/icofont/css/icofont.css' %}">
+            <!-- Style.css -->
+            <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'assets/css/jquery.mCustomScrollbar.css' %}">
+        {% endblock main_styles %}
+        
+        {% block extra_styles %}
+
+        {% endblock extra_styles %}
+    </head>
+<body>
+    {% block header %}
+        {% block navbar %}
+            {% comment %} {% include 'admin1/partials/_navbar.html' %} {% endcomment %}
+        {% endblock navbar %}
+    {% endblock header%}
+    {% block sidebar %}
+        {% comment %} {% include 'admin1/partials/_sidebar.html' %} {% endcomment %}
+    {% endblock sidebar %}
+    {% block main_content %}
+        <main>
+            <div class="container">
+                <h3 class="page-header">Dashboard</h3>
+            </div>
+        </main>
+    {% endblock %}
+    {% block footer %}
+        {% comment %} {% include 'admin1/partials/_footer.html' %} {% endcomment %}
+    {% endblock footer %}
+    {% block main_scripts %}
+        <script src="{% static 'assets/js/vendors.js' %} "></script>
+        <script src="{% static 'assets/js/home.js' %} "></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.js"></script>
+        {% block extra_scripts %}
+
+        {% endblock extra_scripts %}
+    {% endblock main_scripts %}
+</body>
+</html>
