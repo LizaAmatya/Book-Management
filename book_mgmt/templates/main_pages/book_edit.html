@@ -1,0 +1,90 @@
+{% extends 'partials/base.html' %}
+
+{% block main_content %}
+        <main>
+            <div class="container">
+                <h3 class="page-header">Book Update</h3>
+            </div>
+            <div>
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        {% for title, error  in form.errors.items %}
+                            <ul>{{title}} : {{error|striptags}}</ul>
+                        {% endfor %}
+                        </div>
+                {% endif %}
+            </div>
+            <div class="page-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- Basic Form Inputs card start -->
+                        <div class="card">
+                            <div class="card-header">
+                               
+                                <div class="card-header-right"><i
+                                    class="icofont icofont-spinner-alt-5"></i></div>
+
+                                    <div class="card-header-right">
+                                        <i class="icofont icofont-spinner-alt-5"></i>
+                                    </div>
+                                </div>
+                                <div class="card-block">
+                                     <div class="page-header">
+                                        <a class="btn btn-sm btn-info pcoded-mtext" href="{% url 'books:book_list' %}"><span
+                                                class="ic-arrow-left"></span>Back to Book List</a>
+                                    </div>
+                                   <form method="post" id="bookForm" action="{% url 'books:book_update' book.id%}" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Name</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="name" class="form-control" value="{{object.name}}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Published Date</label>
+                                            <div class="col-sm-10">
+                                                <input type="date" name="published_date" value="{{object.published_date|date:'Y-m-d'}}" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Author</label>
+                                            <div class="col-sm-10">
+                                                <select name="author" class="form-control">
+                                                    <option value="">----------</option>
+                                                    {% for author in authors %}
+                                                    <option value="{{author.pk}}" {% if author.id == object.author.id %} selected="selected" {% endif %}>{{author.name}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                         <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Price</label>
+                                            <div class="col-sm-10">
+                                                <input type="number" step=".01" name="price" value="{{object.price}}" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">Upload Cover Image</label>
+                                            <div class="col-sm-10">
+                                                <input type="file" name="cover_image" class="form-control">
+                                                {% if object.cover_image %}
+                                                <img src="{{object.cover_image.url}}" width="150"
+                                                height="100"/>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="section-footer"><a class="btn btn-outline-gray" href="{% url 'books:book_list' %}">Cancel</a>
+                                            <button class="btn btn-success" type="submit">Submit</button>
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+{% endblock main_content%}
