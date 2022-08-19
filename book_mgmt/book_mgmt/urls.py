@@ -22,4 +22,5 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('books/', include('books.urls'), name="books"),
+    path('users/',include('user_mgmt.urls'), name='user_mgmt')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
