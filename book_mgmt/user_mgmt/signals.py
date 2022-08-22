@@ -5,5 +5,5 @@ from django.dispatch import receiver
 # @receiver(post_save, sender=get_user_model())
 # def create_user_profile(sender, instance, created, **kwargs):
 #     if created:
-#         UserProfile.objects.create(user=instance,mobile_number=instance.phone_number)
+#         UserProfile.objects.create(user=instance)
 #     instance.profile.save()
