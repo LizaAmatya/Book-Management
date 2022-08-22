@@ -40,3 +40,10 @@ class SignUpForm(forms.ModelForm):
             raise forms.ValidationError('Email Already Registered')
         return self.cleaned_data.get('email')
     
+    
+class UserLoginForm(forms.Form):
+
+    username = forms.CharField(max_length=255, required=True)
+    password = forms.CharField(max_length=255, required=True)
+    class Meta:
+        fields = ['username', 'password']

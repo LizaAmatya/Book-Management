@@ -5,6 +5,7 @@ from django.views.generic import TemplateView, ListView, CreateView, UpdateView
 
 from books.forms import BookForm
 from books.models import Author, Book
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 # class HomePageView(View):
@@ -28,7 +29,7 @@ class BookListView(ListView):
         
         return context
     
-class BookCreateView(CreateView):
+class BookCreateView(LoginRequiredMixin, CreateView):
     model = Book
     form_class = BookForm
     template_name = "main_pages/book_create.html"
@@ -46,7 +47,7 @@ class BookCreateView(CreateView):
         return super().form_valid(form)
     
     
-class BookUpdateView(UpdateView):
+class BookUpdateView(LoginRequiredMixin, UpdateView):
     model = Book
     form_class = BookForm
     template_name = "main_pages/book_edit.html"
