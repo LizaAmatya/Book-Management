@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView, ListView, CreateView, UpdateView
+from user_mgmt.permissions import BookManagementPermission
 
 from books.forms import BookForm
 from books.models import Author, Book
@@ -29,7 +30,7 @@ class BookListView(ListView):
         
         return context
     
-class BookCreateView(LoginRequiredMixin, CreateView):
+class BookCreateView(LoginRequiredMixin, BookManagementPermission, CreateView):
     model = Book
     form_class = BookForm
     template_name = "main_pages/book_create.html"
@@ -47,7 +48,7 @@ class BookCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
     
     
-class BookUpdateView(LoginRequiredMixin, UpdateView):
+class BookUpdateView(LoginRequiredMixin,BookManagementPermission, UpdateView):
     model = Book
     form_class = BookForm
     template_name = "main_pages/book_edit.html"

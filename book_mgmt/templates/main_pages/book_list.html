@@ -11,8 +11,10 @@
                 <!-- Basic table card start -->
                 <div class="card">
                     <div class="page-header">
+                    {% if perms.user_mgmt.book_mgmt_perm  %}
                     <a class="btn btn-sm btn-info pcoded-mtext" href="{% url 'books:book_create' %}"><span
                             class="ic-arrow-left"></span>ADD a Book</a>
+                    {% endif %}
                     </div>
                     {% comment %} <div class="card-header">
                         <h5>Basic table</h5>
