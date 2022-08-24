@@ -25,5 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomePageView.as_view(), name="homepage"),
     path('books/', include('books.urls'), name="books"),
-    path('users/',include('user_mgmt.urls'), name='user_mgmt')
+    path('users/',include('user_mgmt.urls'), name='user_mgmt'),
+    path('api/',include('rest_framework.urls'), name="rest_framework"),
+    path('api/v1/',include('api.urls'), name="api"),
+    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
