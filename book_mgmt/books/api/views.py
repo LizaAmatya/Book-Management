@@ -8,3 +8,4 @@ class BookListAPIView(ListAPIView):
     serializer_class = BookSerializer
     queryset = Book.objects.all()
     
+    # TODO: custom response show to stds

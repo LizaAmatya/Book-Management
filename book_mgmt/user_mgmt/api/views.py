@@ -7,7 +7,7 @@ from rest_framework.generics import (CreateAPIView, ListAPIView,
                                      ListCreateAPIView, RetrieveAPIView,
                                      RetrieveUpdateAPIView,
                                      RetrieveUpdateDestroyAPIView,
-                                     UpdateAPIView)
+                                     UpdateAPIView, )
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 
