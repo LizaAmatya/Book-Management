@@ -53,6 +53,5 @@ class RegisterUserView(CreateAPIView):
                 "mobile_number",
             ],
         )
-        
 
         return Response(custom_response, status=status.HTTP_201_CREATED)
