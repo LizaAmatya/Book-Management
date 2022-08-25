@@ -80,25 +80,26 @@ class AuthorViewSet(ModelViewSet):
     
     # overriding permission classes
     
-    def get_permissions(self):
-        """
-        Instantiates and returns the list of permissions that this view requires.
-        """
-        if self.action == 'list':
-            permission_classes = [IsAuthenticated]
-        else:
-            permission_classes = [IsAdminUser]
-        return [permission() for permission in permission_classes]
+    # def get_permissions(self):
+    #     """
+    #     Instantiates and returns the list of permissions that this view requires.
+    #     """
+    #     if self.action == 'list':
+    #         permission_classes = [IsAuthenticated]
+    #     else:
+    #         permission_classes = [IsAdminUser]
+    #     return [permission() for permission in permission_classes]
 
-    # overriding method Eg:
-    def destroy(self, request, *args, **kwargs):
-        obj = self.get_object()
+
+    # # overriding method Eg:
+    # def destroy(self, request, *args, **kwargs):
+    #     obj = self.get_object()
         
-        res = {
-            'status': True,
-            'message': "Successfully Deleted",
-            'data': None
-        }
+    #     res = {
+    #         'status': True,
+    #         'message': "Successfully Deleted",
+    #         'data': None
+    #     }
         
-        return Response(res, status=status.HTTP_200_OK)
+    #     return Response(res, status=status.HTTP_200_OK)
     

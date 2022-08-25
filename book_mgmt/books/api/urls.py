@@ -33,6 +33,8 @@ author_detail = AuthorViewSet.as_view({
 
 etc.
 
+path('update/<int:pk>', author_detail, name='book_update'),
+
 '''
 
 
