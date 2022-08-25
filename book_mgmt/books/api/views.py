@@ -63,7 +63,7 @@ class BookUpdateAPIView(UpdateAPIView):
     def update(self, request, *args, **kwargs):
         obj = self.get_object()
 
-        serializer = self.get_serializer(obj, request.data)
+        serializer = self.get_serializer(obj, data=request.data)
         if serializer.is_valid(raise_exception=True):
             book = serializer.save()
 
