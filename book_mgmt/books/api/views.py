@@ -1,4 +1,4 @@
-from books.api.serializers import AuthorSerializer, BookSerializer
+from books.api.serializers import AuthorSerializer, BookDetailSerializer, BookSerializer
 from books.models import Author, Book
 from django.shortcuts import get_object_or_404
 from rest_framework import status
@@ -20,7 +20,7 @@ class BookListAPIView(ListAPIView):
 
         res = {
             'status': True,
-            'data': BookSerializer(queryset, many=True).data,
+            'data': BookDetailSerializer(queryset, many=True).data,
             'message': 'successfully retrieved'
         }
 
