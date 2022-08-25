@@ -8,6 +8,9 @@ class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = '__all__'
+        
+    # def validate(self, obj):
+    #     ...
 
 
 class AuthorSerializer(serializers.ModelSerializer):

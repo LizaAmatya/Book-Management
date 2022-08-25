@@ -6,12 +6,14 @@ from rest_framework.generics import (CreateAPIView, ListAPIView,
                                      RetrieveAPIView, UpdateAPIView)
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet, ModelViewSet
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 
 
 class BookListAPIView(ListAPIView):
     serializer_class = BookSerializer
     queryset = Book.objects.all()
+    permission_classes = [AllowAny]
+
 
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
@@ -30,8 +32,9 @@ class BookCreateAPIView(CreateAPIView):
     queryset = Book.objects.all()
 
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(request.data)
+        serializer = self.get_serializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
+            print(serializer.validated_data)
             book = serializer.save()
 
         return Response(data={'status': True, 'data': serializer.data, 'msg': 'Successful'}, status=status.HTTP_201_CREATED)
